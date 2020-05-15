@@ -4,7 +4,7 @@
   "description": "Store files in MongoDb accessed through an express middleware.",
   "main": "./src/file-middleware/index.js",
   "files": [
-    "src"
+    "src/file-middleware/**"
   ],
   "scripts": {
     "test": "mocha --recursive ./test",
