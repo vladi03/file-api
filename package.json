@@ -1,0 +1,27 @@
+{
+  "name": "file-api-mongodb",
+  "version": "0.0.1",
+  "description": "Store files in MongoDb accessed through an express middleware.",
+  "main": "./src/file-middleware/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladi03/file-api-mongodb.git"
+  },
+  "keywords": [
+    "file",
+    "upload",
+    "mongodb"
+  ],
+  "author": "Vlad Martinez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladi03/file-api/issues"
+  },
+  "homepage": "https://github.com/vladi03/file-api#readme",
+  "dependencies": {
+    "multer": "^1.4.2"
+  }
+}
