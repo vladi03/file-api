@@ -5,7 +5,8 @@
   "main": "./src/file-middleware/index.js",
   "scripts": {
     "test": "mocha --recursive ./test",
-    "version:patch": "npm version patch"
+    "version:patch": "npm version patch",
+    "push": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
