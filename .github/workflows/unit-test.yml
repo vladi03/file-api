@@ -18,6 +18,3 @@ jobs:
       - run: npm install
       - run: npm install mocha -g
       - run: npm test
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
