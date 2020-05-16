@@ -16,3 +16,5 @@ appRouter.get('/appName', async (req, res) => {
 appRouter.use(function (req, res) {
     res.json({message: "Hello World",stamp: new Date()});
 });
+
+module.exports = appRouter;
