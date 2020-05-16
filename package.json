@@ -10,9 +10,11 @@
     "test": "mocha --recursive ./test",
     "version:patch": "npm version patch",
     "push:release": "git push && git push --tags",
-    "push": "git push",
+    "push:standard": "git push",
     "start": "node file-api.js",
-    "git": "git add . && git commit -m"
+    "git": "git add . && git commit -m",
+    "push": "npm-run-all git test push:standard",
+    "release" : "npm-run-all test version:patch push:release"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "npm-run-all": "^4.1.5"
   }
 }
