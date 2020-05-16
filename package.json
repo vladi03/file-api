@@ -9,7 +9,8 @@
   "scripts": {
     "test": "mocha --recursive ./test",
     "version:patch": "npm version patch",
-    "push": "git push --tags",
+    "push:release": "git push && git push --tags",
+    "push": "git push",
     "start": "node file-api.js",
     "git": "git add . && git commit -m"
   },
