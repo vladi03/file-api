@@ -1,6 +1,6 @@
 {
   "name": "file-api-mongodb",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Store files in MongoDb accessed through an express middleware.",
   "main": "./src/file-middleware/index.js",
   "files": [
@@ -14,7 +14,7 @@
     "start": "node file-api.js",
     "git": "git add . && git commit -m",
     "push": "npm-run-all git test push:standard",
-    "release" : "npm-run-all test version:patch push:release"
+    "release": "npm-run-all test version:patch push:release"
   },
   "repository": {
     "type": "git",
