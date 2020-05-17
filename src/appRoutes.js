@@ -1,10 +1,29 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
+const {writeFileToDb} = require("./file-middleware/writeFileToDb");
 const appRouter = express();
+const multer = require('multer');
+const {connect} = require("./file-middleware/dbConnect");
 
 appRouter.use(bodyParser.urlencoded({ extended: false }));
 appRouter.use(bodyParser.json());
+
+
+const upload = multer({
+    dest: 'uploads/' // this saves your file into a directory called "uploads"
+});
+
+// It's very crucial that the file name matches the name attribute in your html
+appRouter.post('/', upload.single('myFile'),
+    (req, res) => {
+        console.log("post file");
+        console.log(req.body);
+        res.redirect('/');
+        writeFileToDb();
+});
+
+
 //define each object route in the API
 appRouter.get('/appName', async (req, res) => {
     res.json({
