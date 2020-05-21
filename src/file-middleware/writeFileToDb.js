@@ -21,10 +21,7 @@ const writeFileToDb = async (inBuffer)=> {
     }).
     on('finish', function() {
         console.log('done! db write.');
-        //process.exit(0);
     });
-
-    //bufferStream.push(inBuffer);
 };
 
 module.exports = {writeFileToDb};
