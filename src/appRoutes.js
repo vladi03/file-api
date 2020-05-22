@@ -5,7 +5,7 @@ const appRouter = express();
 appRouter.use(bodyParser.urlencoded({ extended: false }));
 appRouter.use(bodyParser.json());
 
-const upload = multerUpload();
+const upload = multerUpload({bucketName : 'darbyBucket'});
 // It's very crucial that the file name matches the name attribute in your html
 appRouter.post('/', upload.single('myFile'),
     (req, res) => {

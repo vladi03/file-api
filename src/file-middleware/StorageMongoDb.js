@@ -3,13 +3,15 @@ const {GridFSBucket} = require('mongodb');
 const multer = require('multer');
 //const {writeFileToDb} = require("./file-middleware/writeFileToDb");
 //const path = require("path");
-function StorageMongoDb (opts) {
+function StorageMongoDb ({bucketName, connectDb}) {
+    this.bucketName = bucketName || "fileBucket";
+    this.connect = connectDb || connect;
 }
 
 StorageMongoDb.prototype._handleFile = async function _handleFile (req, file, cb) {
-    const db = await connect();
+    const db = await this.connect();
     const bucket = new GridFSBucket(db,
-        { bucketName: 'darbyBucket',
+        { bucketName: this.bucketName, //bucketName : 'darbyBucket'
             chunkSizeBytes: 30000 });
         const outStream = bucket.openUploadStream(file.originalname);
 
@@ -33,7 +35,7 @@ module.exports = {
     storageMongoDb: function (opts) {
         return new StorageMongoDb(opts)
     },
-    multerUpload: function () {
-        return multer({ storage: new StorageMongoDb() });
+    multerUpload: function (opts) {
+        return multer({ storage: new StorageMongoDb(opts) });
     }
 };

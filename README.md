@@ -7,7 +7,7 @@ Store files in MongoDb accessed through an express middleware.
 ```javascript
 const {multerUpload} = require("file-api-mongodb");
 
-const upload = multerUpload();
+const upload = multerUpload(opt);
 // It's very crucial that the file name matches the name attribute in your html
 appRouter.post('/', upload.single('myFile'),
     (req, res) => {
@@ -17,4 +17,12 @@ appRouter.post('/', upload.single('myFile'),
 });
 ```
 
+# Options
+Two options are available for the constructor:
+| variable | description |
+| :---: | :--- |
+|`connectDb (optional)` | function that returns db connection.  If a connectDb function
+    is not provider, the variable "process.env.DB_CONN" is used
+    mongoClient.connect(process.env.DB_CONN)|
+|`bucketName (optional)`| the default value is "fileBucket"|
 
