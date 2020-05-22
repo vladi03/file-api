@@ -21,8 +21,5 @@ appRouter.post('/', upload.single('myFile'),
 Two options are available for the constructor:
 | variable | description |
 | :---: | :--- |
-|`connectDb (optional)` | function that returns db connection.  If a connectDb function
-    is not provider, the variable "process.env.DB_CONN" is used
-    mongoClient.connect(process.env.DB_CONN)|
+|`connectDb (optional)` | function that returns db connection.  If a connectDb function is not provider, the variable "process.env.DB_CONN" is used mongoClient.connect(process.env.DB_CONN)|
 |`bucketName (optional)`| the default value is "fileBucket"|
-
