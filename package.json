@@ -1,6 +1,6 @@
 {
   "name": "file-api-mongodb",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Store files in MongoDb accessed through an express middleware.",
   "main": "./src/file-middleware/index.js",
   "files": [
