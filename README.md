@@ -7,13 +7,24 @@ Store files in MongoDb accessed through an express middleware.
 ```javascript
 const {multerUpload} = require("file-api-mongodb");
 
-const upload = multerUpload(opt);
+const {upload, storage } = multerUpload({bucketName : 'darbyBucket'});
 // It's very crucial that the file name matches the name attribute in your html
 appRouter.post('/', upload.single('myFile'),
     (req, res) => {
-        console.log("post file");
-        console.log(req.body);
         res.redirect('/');
+});
+
+appRouter.get('/:fileName', (req,res) => {
+    storage.getFile(res, req.params.fileName);
+});
+
+appRouter.delete('/:id', (req,res) => {
+    storage.deleteFile(req.params.id, (err) => {
+        if(err)
+            res.status(500).send(err.message);
+        else
+            res.status(204).send();
+    });
 });
 ```
 
@@ -26,3 +37,5 @@ Two options are available for the constructor:
 
 ## The storage object was derived from the following template
 [StorageEngine](https://github.com/expressjs/multer/blob/master/StorageEngine.md)
+
+
