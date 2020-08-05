@@ -11,7 +11,8 @@ const {upload, storage } = multerUpload({bucketName : 'darbyBucket'});
 // It's very crucial that the file name matches the name attribute in your html
 appRouter.post('/', upload.single('myFile'),
     (req, res) => {
-        res.redirect('/');
+    //the successful result of the file upload is in "fileData" field.
+    res.json(req.fileData);
 });
 
 appRouter.get('/:fileName', (req,res) => {

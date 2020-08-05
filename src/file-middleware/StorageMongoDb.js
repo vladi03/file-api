@@ -16,10 +16,15 @@ StorageMongoDb.prototype._handleFile = async function _handleFile (req, file, cb
         { bucketName: this.bucketName, //bucketName : 'darbyBucket'
             chunkSizeBytes: 30000 });
         const outStream = bucket.openUploadStream(file.originalname);
-
+        const id = outStream.id;
         file.stream.pipe(outStream);
         outStream.on('error', cb);
         outStream.on('finish', function () {
+            req.fileData = {
+                id: id,
+                fileName: file.originalname
+            };
+
             cb(null, {
                 fileName: "name",
                 size: outStream.bytesWritten
