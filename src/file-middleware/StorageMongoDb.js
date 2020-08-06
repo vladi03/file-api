@@ -66,6 +66,28 @@ StorageMongoDb.prototype.getFile = async function getFile (res, fileName) {
         });
 };
 
+StorageMongoDb.prototype.getFileList = async function getFile (res) {
+    const db = await this.connect();
+    const bucket = new GridFSBucket(db,
+        { bucketName: this.bucketName, //bucketName : 'darbyBucket'
+            chunkSizeBytes: 30000 });
+
+    // noinspection JSCheckFunctionSignatures
+    bucket
+        .find({
+
+        })
+        .toArray((err, files) => {
+            if (!files || files.length === 0) {
+                return res.status(404).json({
+                    err: "no files exist"
+                });
+            } else
+                res.json(files);
+
+        });
+};
+
 StorageMongoDb.prototype.getFileById = async function getFileById (res, id) {
     const db = await this.connect();
     const bucket = new GridFSBucket(db,

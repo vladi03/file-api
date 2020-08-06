@@ -15,8 +15,16 @@ appRouter.post('/', upload.single('myFile'),
     res.json(req.fileData);
 });
 
+appRouter.get('/', (req,res) => {
+    storage.getFileList(res);
+});
+
 appRouter.get('/:fileName', (req,res) => {
     storage.getFile(res, req.params.fileName);
+});
+
+appRouter.get('/id/:id', (req,res) => {
+    storage.getFileById(res, req.params.id);
 });
 
 appRouter.delete('/:id', (req,res) => {
