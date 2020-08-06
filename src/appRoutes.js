@@ -17,6 +17,10 @@ appRouter.get('/:fileName', (req,res) => {
     storage.getFile(res, req.params.fileName);
 });
 
+appRouter.get('/id/:id', (req,res) => {
+    storage.getFileById(res, req.params.id);
+});
+
 appRouter.delete('/:id', (req,res) => {
     storage.deleteFile(req.params.id, (err) => {
         if(err)
