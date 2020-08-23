@@ -43,6 +43,7 @@ Two options are available for the constructor:
 | :---: | :--- |
 |`connectDb (optional)` | function that returns db connection.  If a connectDb function is not provider, the variable "process.env.DB_CONN" is used mongoClient.connect(process.env.DB_CONN)|
 |`bucketName (optional)`| the default value is "fileBucket"|
+|`dbName (optional)`| the default value is "identity" is the database name|
 
 ## The storage object was derived from the following template
 [StorageEngine](https://github.com/expressjs/multer/blob/master/StorageEngine.md)
