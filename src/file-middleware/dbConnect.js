@@ -1,7 +1,7 @@
 const mongoClient = require("mongodb").MongoClient;
 let dbConnection = null;
 
-const connect = () => {
+const connect = (dbName) => {
     return new Promise((resolve, reject) => {
         if(dbConnection)
             resolve(dbConnection);
@@ -14,7 +14,7 @@ const connect = () => {
                     if(err)
                         reject(err);
                     else {
-                        dbConnection = client.db("identity");
+                        dbConnection = client.db(dbName);
                         resolve(dbConnection);
                     }
                 });
