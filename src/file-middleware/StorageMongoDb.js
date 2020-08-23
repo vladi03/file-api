@@ -35,7 +35,7 @@ StorageMongoDb.prototype._handleFile = async function _handleFile (req, file, cb
 };
 
 StorageMongoDb.prototype.deleteFile = async function getFile (id, cb) {
-    const db = await this.connect();
+    const db = await this.connect(this.dbName);
     const bucket = new GridFSBucket(db,
         { bucketName: this.bucketName,
             chunkSizeBytes: 30000 });
@@ -47,7 +47,7 @@ StorageMongoDb.prototype.deleteFile = async function getFile (id, cb) {
 
 
 StorageMongoDb.prototype.getFile = async function getFile (res, fileName) {
-    const db = await this.connect();
+    const db = await this.connect(this.dbName);
     const bucket = new GridFSBucket(db,
         { bucketName: this.bucketName, //bucketName : 'darbyBucket'
             chunkSizeBytes: 30000 });
@@ -68,7 +68,7 @@ StorageMongoDb.prototype.getFile = async function getFile (res, fileName) {
 };
 
 StorageMongoDb.prototype.getFileList = async function getFile (res) {
-    const db = await this.connect();
+    const db = await this.connect(this.dbName);
     const bucket = new GridFSBucket(db,
         { bucketName: this.bucketName, //bucketName : 'darbyBucket'
             chunkSizeBytes: 30000 });
@@ -90,7 +90,7 @@ StorageMongoDb.prototype.getFileList = async function getFile (res) {
 };
 
 StorageMongoDb.prototype.getFileById = async function getFileById (res, id) {
-    const db = await this.connect();
+    const db = await this.connect(this.dbName);
     const bucket = new GridFSBucket(db,
         { bucketName: this.bucketName, //bucketName : 'darbyBucket'
             chunkSizeBytes: 30000 });
