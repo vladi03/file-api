@@ -37,6 +37,14 @@ appRouter.delete('/:id', (req,res) => {
 });
 ```
 
+To scale an image that is being uploaded, set the request parameter "imageWidth"
+```javascript
+appRouter.post('/image/:imageWidth', upload.single('myFile'),
+    (req, res) => {
+        res.json(req.fileData);
+    });
+```
+
 ## Options
 Two options are available for the constructor:
 | variable | description |

@@ -1,4 +1,5 @@
 const {connect} = require("./dbConnect");
+const sharp = require('sharp');
 const {ObjectId} = require("mongodb");
 const {GridFSBucket} = require('mongodb');
 const multer = require('multer');
@@ -19,7 +20,18 @@ StorageMongoDb.prototype._handleFile = async function _handleFile (req, file, cb
             chunkSizeBytes: 30000 });
         const outStream = bucket.openUploadStream(file.originalname);
         const id = outStream.id;
-        file.stream.pipe(outStream);
+        //console.log(req.params && req.params.imageWidth);
+        const imageScaleWidth = req.params && req.params.imageWidth &&
+            parseInt(req.params.imageWidth);
+        console.log(imageScaleWidth);
+        if(imageScaleWidth) {
+            // create the resize transform
+            const resizeTransform = sharp().resize(imageScaleWidth).jpeg();
+            //do the streaming
+            file.stream.pipe(resizeTransform).pipe(outStream);
+        } else
+            file.stream.pipe(outStream);
+
         outStream.on('error', cb);
         outStream.on('finish', function () {
             req.fileData = {
