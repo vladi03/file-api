@@ -23,7 +23,7 @@ StorageMongoDb.prototype._handleFile = async function _handleFile (req, file, cb
         //console.log(req.params && req.params.imageWidth);
         const imageScaleWidth = req.params && req.params.imageWidth &&
             parseInt(req.params.imageWidth);
-        console.log(imageScaleWidth);
+
         if(imageScaleWidth) {
             // create the resize transform
             const resizeTransform = sharp().resize(imageScaleWidth).jpeg();
