@@ -7,7 +7,7 @@
     "src/file-middleware/**"
   ],
   "scripts": {
-    "test": "mocha --recursive ./test",
+    "test": "mocha --recursive ./tests",
     "test-jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "version:patch": "npm version patch",
     "push:release": "git push && git push --tags",
