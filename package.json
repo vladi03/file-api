@@ -1,6 +1,6 @@
 {
   "name": "file-api-mongodb",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Store files in MongoDb accessed through an express middleware.",
   "main": "./src/file-middleware/index.js",
   "files": [
@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "test": "mocha --recursive ./test",
+    "test-jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "version:patch": "npm version patch",
     "push:release": "git push && git push --tags",
     "push:standard": "git push",
@@ -35,11 +36,12 @@
     "express": "^4.17.1",
     "mongodb": "^3.5.7",
     "multer": "^1.4.2",
-    "sharp": "^0.26.2"
+    "sharp": "^0.29.3"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
+    "jest": "27.2",
     "npm-run-all": "^4.1.5"
   }
 }
