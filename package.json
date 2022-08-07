@@ -1,6 +1,6 @@
 {
   "name": "file-api-mongodb",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "Store files in MongoDb accessed through an express middleware.",
   "main": "./src/file-middleware/index.js",
   "files": [
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/vladi03/file-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^3.5.7",
+    "mongodb": "^4.8.1",
     "multer": "^1.4.2",
     "sharp": "^0.29.3"
   },
